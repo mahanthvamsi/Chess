@@ -3,24 +3,28 @@ package model;
 
 import model.Board;
 import model.Color;
-import model.Position;
+import input.Position;
 import java.util.*;
+import controller.*;
 
 public abstract class Piece implements Cloneable {
     protected Color color;
     protected Position pos;
-    protected char repr;
+    protected String repr;  // change from char → String
 
-    public Piece(Color c, Position p, char r) {
+    public Piece(Color c, Position p, String r) {
         color = c;
         pos = p;
         repr = r;
     }
 
+    public String getRepr() { return repr; }
+
     public Color getColor() { return color; }
     public Position getPosition() { return pos; }
     public void setPosition(Position p) { pos = p; }
-    public char getRepr() { return repr; }
+
+    
 
     public abstract List<Position> legalMoves(Board b);
 
@@ -30,3 +34,4 @@ public abstract class Piece implements Cloneable {
         catch (Exception e) { throw new RuntimeException(e); }
     }
 }
+

@@ -6,7 +6,9 @@ import input.Position;
 import java.util.*;
 
 public class Bishop extends Piece{
-public Bishop(Color c, Position p){ super(c,p, c==Color.WHITE ? 'B':'b'); }
+public Bishop(Color c, Position p) {
+    super(c, p, c == Color.WHITE ? "\u2657" : "\u265D");
+}
 @Override public List<Position> legalMoves(Board b){
 return linearMoves(b, new int[][]{{1,1},{1,-1},{-1,1},{-1,-1}});
 }

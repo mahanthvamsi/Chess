@@ -2,11 +2,14 @@ package model;
 
 import model.Board;
 import model.Color;
-import model.Position;
+import input.Position;
 import java.util.*;
+import controller.*;
 
 public class Queen extends Piece{
-public Queen(Color c, Position p){ super(c,p, c==Color.WHITE ? 'Q':'q'); }
+public Queen(Color c, Position p) {
+    super(c, p, c == Color.WHITE ? "\u2655" : "\u265B");
+}
 @Override public List<Position> legalMoves(Board b){
 List<Position> m=new ArrayList<>();
 int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}};

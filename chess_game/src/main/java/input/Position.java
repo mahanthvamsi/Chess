@@ -21,6 +21,10 @@ public class Position {
     public String toAlgebraic() {
         return "" + (char) ('a' + col) + (8 - row);
     }
+    public boolean inBounds() {
+    return row >= 0 && row < 8 && col >= 0 && col < 8;
+}
+
 
     @Override
     public boolean equals(Object o) {
@@ -35,4 +39,3 @@ public class Position {
         return row * 31 + col;
     }
 }
-

@@ -2,14 +2,34 @@ package model;
 
 import model.Board;
 import model.Color;
-import model.Position;
+import input.Position;
 import java.util.*;
 
-public class Knight extends Piece{
-public Knight(Color c, Position p){ super(c,p, c==Color.WHITE ? 'N':'n'); }
-@Override public List<Position> legalMoves(Board b){
-List<Position> m=new ArrayList<>(); int[][] deltas={{2,1},{2,-1},{-2,1},{-2,-1},{1,2},{1,-2},{-1,2},{-1,-2}};
-for(int[] d: deltas){ int r=pos.row+d[0], c=pos.col+d[1]; if(b.inBounds(r,c)){ Piece p=b.getPiece(r,c); if(p==null || p.getColor()!=color) m.add(new Position(r,c)); }}
-return m;
-}
+public class Knight extends Piece {
+    public Knight(Color c, Position p) {
+        super(c, p, c == Color.WHITE ? "\u2658" : "\u265E");
+    }
+
+    @Override
+    public List<Position> legalMoves(Board b) {
+        List<Position> moves = new ArrayList<>();
+        int[][] offsets = {
+            {-2, -1}, {-2, 1}, {-1, -2}, {-1, 2},
+            {1, -2}, {1, 2}, {2, -1}, {2, 1}
+        };
+
+        for (int[] o : offsets) {
+            int r = pos.row + o[0];
+            int c = pos.col + o[1];
+            if (b.inBounds(r, c)) {
+                Piece target = b.getPiece(r, c);
+                // Only add if target is empty or opponent’s piece
+                if (target == null || target.getColor() != color) {
+                    moves.add(new Position(r, c));
+                }
+            }
+        }
+
+        return moves;
+    }
 }
