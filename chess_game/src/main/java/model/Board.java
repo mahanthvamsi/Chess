@@ -11,7 +11,6 @@ public class Board implements Cloneable {
 
     public Board() { }
 
-    /* ---------- Basic Getters / Setters ---------- */
 
     public boolean inBounds(int r, int c) {
         return r >= 0 && r < 8 && c >= 0 && c < 8;
@@ -28,7 +27,6 @@ public class Board implements Cloneable {
     public void setPiece(int r, int c, Piece p) {
         grid[r][c] = p;
         if (p != null) {
-            // always update the piece’s internal position
             p.setPosition(new Position(r, c));
         }
     }
@@ -45,10 +43,8 @@ public class Board implements Cloneable {
         return controller;
     }
 
-    /* ---------- Initialization ---------- */
 
     public void initialize() {
-        // Clear the board
         for (int r = 0; r < 8; r++)
             for (int c = 0; c < 8; c++)
                 grid[r][c] = null;
@@ -86,15 +82,12 @@ public class Board implements Cloneable {
         setPiece(0, 4, new King(Color.BLACK, new Position(0, 4)));
     }
 
-    /* ---------- Move Logic ---------- */
 
     public void movePiece(Position from, Position to) {
         Piece p = getPiece(from);
         setPiece(to, p);
         setPiece(from, null);
     }
-
-    /* ---------- Cloning ---------- */
 
     @Override
     public Board clone() {
@@ -108,13 +101,12 @@ public class Board implements Cloneable {
                     if (p != null) {
                         Piece copy = copyPiece(p);
                         b.grid[r][c] = copy;
-                        // 🟢 ensure the cloned piece’s internal position is correct
                         copy.setPosition(new Position(r, c));
                     }
                 }
             }
 
-            b.controller = null; // clone is independent
+            b.controller = null; 
             return b;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -122,7 +114,7 @@ public class Board implements Cloneable {
     }
 
 
-    /** Deep copy of a single piece (creates new Position too). */
+
     private Piece copyPiece(Piece p) {
         Position posCopy = new Position(p.getPosition().row, p.getPosition().col);
 
@@ -141,7 +133,6 @@ public class Board implements Cloneable {
 
 
 
-    /* ---------- Utility Queries ---------- */
 
     public Position findKing(Color color) {
         for (int r = 0; r < 8; r++) {

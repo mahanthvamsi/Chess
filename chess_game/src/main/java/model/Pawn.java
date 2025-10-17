@@ -18,11 +18,9 @@ public List<Position> legalMoves(Board b) {
     int r = pos.row + dir;
     int c = pos.col;
 
-    // --- forward 1 ---
     if (b.inBounds(r, c) && b.getPiece(r, c) == null) {
         moves.add(new Position(r, c));
 
-        // --- forward 2 (from start rank) ---
         int startRow = (color == Color.WHITE) ? 6 : 1;
         int r2 = pos.row + 2 * dir;
         if (pos.row == startRow && b.inBounds(r2, c)

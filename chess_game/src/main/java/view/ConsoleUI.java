@@ -4,7 +4,6 @@ import model.*;
 
 public class ConsoleUI {
 
-    // ANSI color codes
     private static final String RESET = "\u001B[0m";
     private static final String WHITE_PIECE = "\u001B[97m";   // bright white
     private static final String BLACK_PIECE = "\u001B[30m";   // real black

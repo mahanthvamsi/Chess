@@ -23,7 +23,7 @@ public class Position {
     }
     public boolean inBounds() {
     return row >= 0 && row < 8 && col >= 0 && col < 8;
-}
+    }
 
 
     @Override

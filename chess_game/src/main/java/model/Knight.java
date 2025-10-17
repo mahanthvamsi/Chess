@@ -23,7 +23,6 @@ public class Knight extends Piece {
             int c = pos.col + o[1];
             if (b.inBounds(r, c)) {
                 Piece target = b.getPiece(r, c);
-                // Only add if target is empty or opponent’s piece
                 if (target == null || target.getColor() != color) {
                     moves.add(new Position(r, c));
                 }

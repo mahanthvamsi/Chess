@@ -18,7 +18,9 @@ public class GameController {
     private List<Piece> blackCaptures = new ArrayList<>();
 
 
-    public Position getEnPassantTarget() { return enPassantTarget; }
+    public Position getEnPassantTarget() { 
+        return enPassantTarget; 
+    }
 
     public GameController() {
         board = new Board();
@@ -128,7 +130,9 @@ public class GameController {
         }
     }
 
-    private Color opponent(Color c) { return c == Color.WHITE ? Color.BLACK : Color.WHITE; }
+    private Color opponent(Color c) { 
+        return c == Color.WHITE ? Color.BLACK : Color.WHITE; 
+    }
 
     public boolean processMove(String input) {
         input = input.replaceAll("\\s+", "");
@@ -203,7 +207,9 @@ public class GameController {
         return true;
     }
 
-    private boolean isKingCaptured(Color color) { return board.findKing(color) == null; }
+    private boolean isKingCaptured(Color color) { 
+        return board.findKing(color) == null; 
+    }
     private void switchTurn() { turn = opponent(turn); }
 
     private boolean wouldBeInCheck(Board b, Color color) {

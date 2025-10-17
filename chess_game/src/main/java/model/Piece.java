@@ -10,7 +10,7 @@ import controller.*;
 public abstract class Piece implements Cloneable {
     protected Color color;
     protected Position pos;
-    protected String repr;  // change from char → String
+    protected String repr;  
 
     public Piece(Color c, Position p, String r) {
         color = c;
